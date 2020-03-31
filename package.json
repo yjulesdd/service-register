@@ -1,0 +1,39 @@
+{
+  "name": "service-register",
+  "version": "1.0.0",
+  "description": "the service register",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha",
+    "testJ": "jest test/controllers/ --runInBand --detectOpenHandles --watch",
+    "start": "nodemon --exec babel-node ./src/index.js ",
+    "db": "babel-node ./src/db/index.js"
+  },
+  "author": "Jules Yao-Yao",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/plugin-transform-runtime": "^7.9.0",
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "is-ip": "^3.1.0",
+    "mongodb": "^3.5.5",
+    "mongoose": "^5.9.6",
+    "regenerator-runtime": "^0.13.5"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/node": "^7.8.7",
+    "@babel/preset-env": "^7.9.0",
+    "@babel/register": "^7.9.0",
+    "@babel/runtime": "^7.9.2",
+    "babel-preset-env": "^1.7.0",
+    "braces": "^3.0.2",
+    "cuid": "^2.1.8",
+    "faker": "^4.1.0",
+    "jest": "^25.2.3",
+    "mocha": "^7.1.1",
+    "nodemon": "^2.0.2"
+  }
+}
