@@ -21,14 +21,17 @@ if(envConfig.error){
 const envKeys = envConfig.parsed;
 //---------------------------------------------------------------------------------------------
 
-app.post('/register', makeCallback(postService))
-app.patch('/update-service-:id',makeCallback(patchService))
-app.get('/delete-service', makeCallback(deleteService))
+// app.post('/register', makeCallback(postService))
+// app.patch('/update-service-:id',makeCallback(patchService))
+// app.get('/delete-service', makeCallback(deleteService))
 
-app.get('/get-service-info', makeCallback(getService));
+// app.get('/get-service-info', makeCallback(getService));
 
-app.get('/get-services-info',makeCallback(getServices))
+// app.get('/get-services-info',makeCallback(getServices))
 
+
+// load all app routes 
+const x = require('./config/routeConfig')(app);
 
 
 app.listen(envKeys.HOST_PORT, () => {

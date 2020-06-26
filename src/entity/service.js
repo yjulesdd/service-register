@@ -3,7 +3,7 @@ const isIp = require('is-ip');
 
 
 
-export default  function BuildMakeService (){
+export default  function BuildMakeService ({RulesChecker, serviceRules}){
     return function makeService(
         {
             id = Id.makeId(),
@@ -11,22 +11,18 @@ export default  function BuildMakeService (){
             serviceAddress,
             servicePort,
             isOnline = true,
+            routes = []
         }
     ){
 
-        if(typeof serviceName === 'string' && serviceName.length < 3 || 
-                typeof serviceName !== 'string'){
-            throw new Error('The service name must have more than 3 charaters and is a string');
+        debugger
+        if(!Id.isValidId(id)){
+            throw new Error('This Id is not correct');
+        }
 
-        }
-        if(! isIp.v4(serviceAddress)){
-            
-            throw new Error('please put a correct adrress')
-        }
-        if( !Number.isInteger(servicePort)  || Number.isInteger(servicePort) && servicePort.toString().length < 2){
-            
-            throw new Error('please enter correct PORT, it will be a number of 2 digits')
-        }
+        if(RulesChecker) RulesChecker(serviceRules, {...arguments[0]});
+
+
 
         return Object.freeze({
             getId: () => id,
@@ -34,6 +30,7 @@ export default  function BuildMakeService (){
             getServiceAddress:() => serviceAddress,
             getServicePort:() =>  servicePort,
             getServiceIsOnline:() => isOnline,
+            getRoutes:()=> routes,
             setIsOnline:(state) => {
                 if(typeof state === 'boolean')
                 IsOnline = state;

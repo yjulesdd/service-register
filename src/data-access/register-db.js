@@ -50,12 +50,55 @@ export default function makeRegisterDb({makeDb}){
         return {id, ...info};
     }
 
+    async function findByName({serviceName}){
+        const db = await makeDb();
+        const result = await db.collection('services').findOne({serviceName});
+        
+        if(result){
+
+            const {_id:id , ...info } = result;
+            return {id, ...info};
+        }
+
+        return false;
+    }
+
+    async function findByAddress({serviceAddress}){
+        const db = await makeDb();
+        const result = await db.collection('services').findOne({serviceAddress});
+        
+        if(result){
+
+            const {_id:id , ...info } = result;
+            return {id, ...info};
+        }
+
+        return false;
+    }
+
+    async function findByPort({servicePort}){
+        
+        const db = await makeDb();
+        const result = await db.collection('services').findOne({servicePort});
+        
+        if(result){
+
+            const {_id:id , ...info } = result;
+            return {id, ...info};
+        }
+
+        return false;
+    }
+
     return Object.freeze({
         insert,
         update,
         remove,
         findById,
-        findAll
+        findByName,
+        findAll,
+        findByAddress,
+        findByPort
     })
 } 
 

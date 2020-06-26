@@ -9,6 +9,10 @@
         "request": "launch",
         "name": "nodemon",
         "runtimeExecutable": "nodemon",
+        "args": [
+            "--exec",
+            "babel-node"
+        ],
         "program": "${workspaceFolder}/src/index.js",
         "restart": true,
         "console": "integratedTerminal",
