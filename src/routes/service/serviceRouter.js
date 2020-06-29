@@ -50,12 +50,25 @@ const updateService = {
     accessRightGroups: []
 }
 
+const runService = {
+    name: "runService",
+    method: "post",
+    link: "/run",
+    controller: [
+        serviceControllers.runService
+    ],
+    params:{},
+    accessRightLevel:[],
+    accessRightGroups:[]
+}
+
 
 const serviceRouter = {
     prefix: "/api/service",
     routerName: "serviceRouter",
     routes:[
         addService,
+        runService,
         getService,
         getServices,
         deleteService,

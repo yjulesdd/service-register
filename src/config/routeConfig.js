@@ -27,9 +27,17 @@ module.exports = (app) => {
                 
                 const method = route.method;            
                 const link = route.link;
-                const controller = route.controller;
+                // const controller = route.controller;
+
+                if(typeof route.controller === "function "){
+                    routers[i][method](link,makeCallback(route.controller));
+                }
+
+                if(Array.isArray(route.controller)){
+                    const controllers = route.controller.map(c => makeCallback(c));                    
+                    routers[i][method](link, controllers);                    
+                }
                 
-                routers[i][method](link,makeCallback(controller));
 
             }catch(e){
                 console.log(e);

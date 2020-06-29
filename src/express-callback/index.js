@@ -1,5 +1,6 @@
 module.exports =  function makeExpressCallback(controller){
-    return (req, res) => {
+   
+    return (req, res, next) => {
 
         const httpRequest = {
             body: req.body,
@@ -14,11 +15,13 @@ module.exports =  function makeExpressCallback(controller){
 
 
 
-        controller(httpRequest)
+        controller(httpRequest, next)
         .then(httpResponse => {
+         
             if(httpResponse.headers){
                 res.set(httpResponse.headers);
             }
+
             res.type('json');
             res.status(httpResponse.statusCode).send(httpResponse.body);
         })

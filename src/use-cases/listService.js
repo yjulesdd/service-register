@@ -1,12 +1,13 @@
 export default function makeListService({serviceDb}){
-    return async function listService({id} = {}){
+    return async function listService({id = {}, serviceName = {}}){
          
-        if(!id){
-            throw  new Error("please supply a service Id");
+        if(!id && !serviceName){
+            throw  new Error("Vous devez fournir un Id ou un serviceName");
         }
 
-
-        const result =  await serviceDb.findById({id});
+        const result =  await serviceDb.findById({id}) || await serviceDb.findByName({serviceName});
         return result;
+
+        
     }
 }
