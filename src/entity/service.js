@@ -15,7 +15,7 @@ export default  function BuildMakeService ({RulesChecker, serviceRules}){
         }
     ){
 
-        debugger
+        
         if(!Id.isValidId(id)){
             throw new Error('This Id is not correct');
         }

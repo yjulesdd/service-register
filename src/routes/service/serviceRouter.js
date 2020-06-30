@@ -54,9 +54,7 @@ const runService = {
     name: "runService",
     method: "post",
     link: "/run",
-    controller: [
-        serviceControllers.runService
-    ],
+    controller: serviceControllers.runService,
     params:{},
     accessRightLevel:[],
     accessRightGroups:[]

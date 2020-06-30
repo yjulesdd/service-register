@@ -52,7 +52,7 @@ export default function makeRegisterDb({makeDb}){
 
     async function findByName({serviceName}){
         const db = await makeDb();
-        const result = await db.collection('services').findOne({serviceName});
+        const result = await db.collection('services').findOne({serviceName : {"$regex" : serviceName, "$options": "i"}});
         
         if(result){
 

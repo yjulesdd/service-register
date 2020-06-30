@@ -4,6 +4,10 @@ export default function makeAddService({serviceDb}){
     
     return  async function addService(serviceToAdd){
 
+        if(!serviceToAdd.serviceName || !serviceToAdd.serviceAddress || !serviceToAdd.servicePort){
+            throw new Error('Un service doit avoir un serviceName, un serviceAdress et un servicePort');
+        }
+
         let founded;
 
         founded = await serviceDb.findByName({serviceName : serviceToAdd.serviceName});
