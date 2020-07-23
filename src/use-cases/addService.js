@@ -10,6 +10,8 @@ export default function makeAddService({serviceDb}){
 
         let founded;
 
+        debugger
+
         founded = await serviceDb.findByName({serviceName : serviceToAdd.serviceName});
 
         if(founded){

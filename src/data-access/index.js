@@ -1,21 +1,19 @@
 import makeRegisterDb from "./register-db";
 import mongodb from 'mongodb';
 
-const MongoClient = mongodb.MongoClient;
-const url = "160.120.188.248";
-const port = 27017;
-const userName = 'register-service'
-const pwd = 123456789;
-const dbName = 'register';
 
-const client = new MongoClient("mongodb://register-service:123456789@160.120.188.248:27017/register",{useUnifiedTopology: true });
+
+const MongoClient = mongodb.MongoClient;
+const url = "mongodb://"+process.env.DB_USERNAME+':'+process.env.DB_PASSWD+'@'+process.env.DB_IP_ADDRESS+':'+ process.env.DB_PORT+'/'+process.env.DB_NAME;
+const client = new MongoClient( url, {useUnifiedTopology: true });
 
 
 export async function makeDb () {
+
     if (!client.isConnected()) {
       await client.connect();
     }
-    return client.db(dbName);
+    return client.db(process.env.DB_NAME);
 }
 
 const registerDb = makeRegisterDb({makeDb});

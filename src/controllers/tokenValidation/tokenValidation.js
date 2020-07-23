@@ -13,16 +13,19 @@ export default function makeValidateToken({} = {}){
                 }
             })
             .then(function(res){
+
+                debugger
                 if(res.status === 200){
                     return true
                 }
             })
             .catch(function(err){
-                
+                debugger
                 return false;
             })
         }catch(error){
             debugger
+            return error;
         }
 
     }

@@ -43,7 +43,7 @@ const deleteService = {
 const updateService = {
     name: "updateService",
     method: "patch",
-    link:"/services",
+    link:"/service",
     controller: serviceControllers.patchService,
     params:{},
     accessRightLevel: [],
