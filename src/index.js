@@ -2,12 +2,14 @@ const envConfig = require('dotenv').config();
 const express = require('express');
 const app = express();
 const makeCallback = require('./express-callback');
+const cors = require('cors');
 
 
 import{ postService, deleteService, patchService, getService, getServices } from './controllers';
 import bodyParser from 'body-parser';
 
 
+app.use(cors());
 app.use(bodyParser.json());
 
 //initiate router in my app

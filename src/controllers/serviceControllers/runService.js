@@ -18,6 +18,7 @@ export default function makeRunService({listService, tokenValidation}){
 
                 if(isValidate){
                     const userInfo = await tokenValidation.getTokenInfo({token});
+
                     
                     if(userInfo.data.userAccesses[serviceName] && userInfo.data.userAccesses[serviceName][request] === true){
                         const toServe = await listService({serviceName});
